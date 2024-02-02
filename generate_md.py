@@ -119,6 +119,7 @@ html_content = f"""
     </style>
 </head>
 <body>
+    <center><h2>Today Helin Woke Up at {}</h2></center>
     <center><h2>Wake Up Time Statistics for {datetime.now().strftime("%B %Y")}</h2></center>
     <div class="container">
         <div class="item">
