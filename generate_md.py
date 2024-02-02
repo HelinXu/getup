@@ -20,6 +20,32 @@ with open(csv_file_path, mode='r') as file:
         date_time_obj = datetime.strptime(f"{date} {time}", '%Y-%m-%d %H:%M:%S')
         times.append(date_time_obj)
 
+latest_time = max(times).strftime('%H:%M:%S')
+# today
+today = datetime.now().strftime('%Y-%m-%d')
+# if lastest time is today, then get today's time
+today_news = ''
+if max(times).strftime('%Y-%m-%d') == today:
+    wakeuptime = max(times).strftime('%H:%M:%S')
+    print(f"Today Helin Woke Up at {wakeuptime}.")
+    today_news = f"Today Helin Woke Up at {wakeuptime}."
+else:
+    print(f"Last Time Helin Woke Up at {latest_time}.")
+    today_news = f"Last Time Helin Woke Up at {latest_time}."
+
+# sort times
+times.sort()
+# find how many times in a roll that Helin woke up before 8:00
+morning_bird_count = 0
+for i in range(len(times)):
+    if times[i].hour < 8:
+        morning_bird_count += 1
+    else:
+        morning_bird_count = 0
+
+today_news += f"Helin has been a morning bird for {morning_bird_count} days in a roll."
+
+
 # 筛选本月和本年的数据
 current_month = datetime.now().month
 current_year = datetime.now().year
@@ -119,7 +145,7 @@ html_content = f"""
     </style>
 </head>
 <body>
-    <center><h2>Today Helin Woke Up at {}</h2></center>
+    <center><h2>{today_news}</h2></center>
     <center><h2>Wake Up Time Statistics for {datetime.now().strftime("%B %Y")}</h2></center>
     <div class="container">
         <div class="item">
