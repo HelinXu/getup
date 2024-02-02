@@ -43,7 +43,7 @@ for i in range(len(times)):
     else:
         morning_bird_count = 0
 
-today_news += f"Helin has been a morning bird for {morning_bird_count} days in a roll."
+today_news += f"\nHelin has been a morning bird for {morning_bird_count} days in a roll."
 
 
 # 筛选本月和本年的数据
