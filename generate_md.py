@@ -37,8 +37,9 @@ else:
 times.sort()
 # find how many times in a roll that Helin woke up before 8:00
 morning_bird_count = 0
+last_time = times[-1]
 for i in range(len(times)):
-    if times[i].hour < 23:
+    if times[i].hour < 8 and abs((times[i] - last_time).days) < 1.5:
         morning_bird_count += 1
     else:
         morning_bird_count = 0
